@@ -1,0 +1,25 @@
+# PyTorch nightly with CUDA 12.8 support
+--extra-index-url https://download.pytorch.org/whl/nightly/cu128
+torch
+torchvision
+torchaudio
+
+# Core dependencies
+numpy
+matplotlib
+pillow
+tqdm
+
+# Jupyter support
+jupyter
+notebook
+ipykernel
+
+# Utilities
+tensorboard
+scipy
+
+# Image quality metrics (optional)
+scikit-image
+
+tensorboard

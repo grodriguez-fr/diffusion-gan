@@ -1,0 +1,6 @@
+.venv
+data
+docs
+__pycache__
+runs
+models
