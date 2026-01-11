@@ -9,7 +9,7 @@ Pour plus de détails théoriques et une analyse complète, voir le rapport : [r
 
 Comparaison à l'époque 200 sur le dataset CelebA (64x64).
 
-|         Diffusion-GAN (Notre implémentation)         |                    Baseline SNGAN                    |
+|         Diffusion-SNGAN          |                    Baseline SNGAN                    |
 | :--------------------------------------------------: | :--------------------------------------------------: |
 | ![Diffusion-GAN](imgs/sngan-diffusion-epoch-200.png) | ![SNGAN Standard](imgs/sngan-baseline-epoch-200.png) |
 
