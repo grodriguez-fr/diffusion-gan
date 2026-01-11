@@ -13,10 +13,6 @@ Comparaison à l'époque 200 sur le dataset CelebA (64x64).
 | :--------------------------------------------------: | :--------------------------------------------------: |
 | ![Diffusion-GAN](imgs/sngan-diffusion-epoch-200.png) | ![SNGAN Standard](imgs/sngan-baseline-epoch-200.png) |
 
-_Courbes d'apprentissage (Pertes Générateur/Discriminateur) :_
-
-![Losses](imgs/losses.png)
-
 ## Prérequis
 
 - **Python 3.13** (Recommandé)
