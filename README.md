@@ -1,97 +1,76 @@
-# Diffusion-GAN Implementation
+# Implémentation de Diffusion-GAN
 
-PyTorch implementation of Diffusion-GAN from scratch for the Deep Learning 2026 course project.
+Implémentation PyTorch de l'architecture **Diffusion-GAN** développé "from scratch" pour le projet de Deep Learning 2026.
+Ce projet combine les GANs et les modèles de diffusion pour stabiliser l'entraînement et améliorer la génération d'images.
 
-## Requirements
+Pour plus de détails théoriques et une analyse complète, voir le rapport : [rapport.pdf](rapport.pdf) (généré depuis `rapport.tex`).
 
-- Python 3.11 - 3.13 (3.13 recommended, latest stable as of Jan 2026)
-- CUDA 12.6, 12.8, or 13.0 (for GPU support)
-- Windows 10/11
+## Résultats Visuels
 
-## Setup
+Comparaison à l'époque 200 sur le dataset CelebA (64x64).
 
-### 1. Install Python 3.13
+|         Diffusion-GAN (Notre implémentation)         |                    Baseline SNGAN                    |
+| :--------------------------------------------------: | :--------------------------------------------------: |
+| ![Diffusion-GAN](imgs/sngan-diffusion-epoch-200.png) | ![SNGAN Standard](imgs/sngan-baseline-epoch-200.png) |
 
-Download and install Python 3.13 from [python.org](https://www.python.org/downloads/).
+_Courbes d'apprentissage (Pertes Générateur/Discriminateur) :_
 
-Latest stable: Python 3.13.11 (Dec 2025) or Python 3.14.2 (Dec 2025, bugfix phase)
+![Losses](imgs/losses.png)
 
-### 2. Create Virtual Environment
+## Prérequis
 
-```powershell
-python -3.13 -m venv venv
-```
+- **Python 3.13** (Recommandé)
+- **CUDA 12.x / 13.0** (Pour accélération GPU)
+- Windows 10/11 (Testé sur cet environnement)
 
-### 3. Activate Virtual Environment
+## Installation Rapide
 
-```powershell
-.\venv\Scripts\Activate.ps1
-```
+1. **Créer l'environnement virtuel** :
 
-If you encounter an execution policy error, run:
+   ```powershell
+   python -3.13 -m venv venv
+   .\venv\Scripts\Activate.ps1
+   ```
 
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
+2. **Installer les dépendances** :
+   ```powershell
+   pip install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128
+   pip install -r requirements.txt
+   ```
 
-Note: PyTorch 2.9.1 (stable, Jan 2026) requires Python 3.10 or later.
-
-### 4. Install Dependencies
-
-```powershell
-py -m pip install --upgrade pip
-pip install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128
-pip install -r requirements.txt
-```
-
-### 5. Verify Installation
-
-```powershell
-python -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA available: {torch.cuda.is_available()}')"
-```
-
-## Project Structure
+## Structure du Projet
 
 ```
 diffusion-gan/
-├── tools/
-│   └── data_loader.py          # Dataset utilities
-├── dataset_exploration.ipynb    # Dataset visualization
-├── requirements.txt             # Dependencies
-└── README.md                    # This file
+├── main.ipynb          # Notebook principal : Entraînement et Démonstration
+├── rapport.tex         # Code source du rapport de projet
+├── src/                # Code source Python
+│   ├── models/         # Architectures (SNGAN, Generator, TimeEmbeddings)
+│   ├── trainer.py      # Boucle d'entraînement et logique principale
+│   ├── tools/          # Chargement de données et modèles
+│   └── utils/          # Diffusion, Calcul FID, Fonctions de perte
+├── data/               # Dossier de données (CelebA, CIFAR-10, MNIST)
+├── runs/               # Logs TensorBoard et samples d'entraînement
+├── models/             # Checkpoints sauvegardés (.pt)
+├── imgs/               # Images pour le rapport et le README
+└── docs/               # Documentation supplémentaire
 ```
 
-## Usage
+## Utilisation
 
-### Explore Datasets
+Ouvrez **`main.ipynb`** dans VS Code ou Jupyter Lab. Ce notebook contient toutes les étapes nécessaires pour :
 
-Open `dataset_exploration.ipynb` in Jupyter or VS Code to visualize MNIST, Fashion-MNIST, or CIFAR-10.
-
-### Available Datasets
-
-- MNIST (28x28 grayscale, 10 classes)
-- Fashion-MNIST (28x28 grayscale, 10 classes)
-- CIFAR-10 (32x32 RGB, 10 classes)
-
-## Development
-
-To deactivate the virtual environment:
+1. Initialiser le modèle.
+2. Lancer l'entraînement (ou charger un checkpoint).
+3. Visualiser les résultats générés.
 
 ```powershell
-deactivate
+# Lancer Jupyter Lab si nécessaire
+jupyter lab main.ipynb
 ```
 
-## Citation
+## Références
 
-Based on the paper: "Diffusion-GAN: Training GANs with Diffusion" by Wang et al.
+Basé sur le papier : _"Diffusion-GAN: Training GANs with Diffusion"_ (Wang et al., 2023).
 
-
-Si tu veux être très précis sur l'origine des blocs "ResBlock" (l'idée d'ajouter x + h à la fin), tu peux aussi citer les inventeurs du ResNet :
-
-    Titre : Deep Residual Learning for Image Recognition
-
-    Auteurs : Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
-
-    Année : 2016 (CVPR)
-
-    Pourquoi ? C'est eux qui ont prouvé que faire des "Skip Connections" (le raccourci) permettait d'entraîner des réseaux très profonds
+Architecture ResNet inspirée de : _"Deep Residual Learning for Image Recognition"_ (He et al., 2016).
