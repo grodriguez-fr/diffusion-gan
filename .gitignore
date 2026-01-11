@@ -3,4 +3,4 @@ data
 docs
 __pycache__
 runs
-models
+*.pt
