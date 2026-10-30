@@ -1,2 +1,0 @@
-Nous avons pour objectif d'implémenter une architecture Diffusion-GAN.
-Nous nous baserons sur le papier Diffusion-GAN: Training GANs with Diffusion (https://arxiv.org/abs/2206.02262) pour coder le modèle from scratch. Pour les données, nous utiliserons le dataset CelebA (https://www.kaggle.com/datasets/jessicali9530/celeba-dataset/data). Nous testerons d'abord en 32x32, puis en 64x64 si cela fonctionne bien.

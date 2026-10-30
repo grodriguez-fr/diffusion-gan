@@ -1,9 +1,12 @@
 # Implémentation de Diffusion-GAN
 
 Implémentation PyTorch de l'architecture **Diffusion-GAN** développé "from scratch" pour le projet de Deep Learning 2026.
+
+Article de référence : [Diffusion-GAN: Training GANs with Diffusion](https://arxiv.org/abs/2206.02262) (Wang et al., ICLR 2023).
+
 Ce projet combine les GANs et les modèles de diffusion pour stabiliser l'entraînement et améliorer la génération d'images.
 
-Pour plus de détails théoriques et une analyse complète, voir le rapport : [rapport.pdf](rapport.pdf) (généré depuis `rapport.tex`).
+Pour plus de détails théoriques et une analyse complète, voir le rapport : [dnn_diffusion_gan_rapport.pdf](dnn_diffusion_gan_rapport.pdf) (généré depuis `rapport.tex`).
 
 ## Résultats Visuels
 
